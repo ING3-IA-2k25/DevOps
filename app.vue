@@ -1,9 +1,3 @@
 <template>
-  <NuxtExample
-    dir="/pages"
-    current-route
-  >
-    <NuxtLoadingIndicator />
-    <NuxtPage />
-  </NuxtExample>
+  <NuxtPage />
 </template>
