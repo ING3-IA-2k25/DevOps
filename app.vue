@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <Test />
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
-  </div>
+  <NuxtExample
+    dir="/pages"
+    current-route
+  >
+    <NuxtLoadingIndicator />
+    <NuxtPage />
+  </NuxtExample>
 </template>
