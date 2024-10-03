@@ -22,6 +22,7 @@ const columns = computed(() => {
     return Object.keys(data.value[0]).map((key) => ({
       key,
       label: key.charAt(0).toUpperCase() + key.slice(1),
+      sortable: true,
     }));
   }
   return [];
@@ -35,15 +36,23 @@ const pageCount = 10
 
 const filteredRows = computed(() => {
   if (!q.value) {
-    return data
+    return data.value
   }
 
-  return data.filter((song) => {
+  return data.value.filter((song) => {
     return Object.values(data).some((value) => {
       return String(value).toLowerCase().includes(q.value.toLowerCase())
     })
   })
 })
+
+const Slicedrows = computed(() => {
+  const start = (page.value - 1) * pageCount;
+  const end = page.value * pageCount;
+  
+  return filteredRows.value.slice(start, end);
+});
+
 </script>
 
 <template>
@@ -55,15 +64,14 @@ const filteredRows = computed(() => {
     </div>
 
     <UTable 
-    :rows="filteredRows" 
+    :rows="Slicedrows" 
     :columns="columns" 
-    :loading="data"
+    :loading="!data"
     :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
     :progress="{ color: 'primary', animation: 'carousel' }"
 
     />
-    
-    <UPagination v-model="page" :page-count="pageCount" :total="data.value.length" class="ml-5" />
+    <UPagination v-model="page" :page-count="pageCount" :total="data.values.length" class="ml-5" />
   </div>
 </template>
 
