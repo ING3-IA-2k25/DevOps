@@ -2,6 +2,25 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Docker-compose
+
+Make sure you have install docker and docker-compose on your engine then:
+
+```bash
+sudo docker-compose up --build -d
+```
+
+## Docker
+
+Make sure you have install docker on your engine then:
+
+```bash
+docker build -t 'devops' -f nuxt.Dockerfile .
+
+docker run -p 3000:3000 -d -t 'devops'
+```
+
+
 ## Setup
 
 Make sure to install the dependencies:

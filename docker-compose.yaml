@@ -1,0 +1,10 @@
+services:
+  front:
+    build:
+      context: .
+      dockerfile: nuxt.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    
