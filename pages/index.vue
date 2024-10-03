@@ -1,7 +1,11 @@
+<script setup>
+
+const data  = await queryContent('/tmp').findOne()
+
+</script>
+
 <template>
   <div>
-    <Test />
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    {{data}}
   </div>
 </template>
