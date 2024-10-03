@@ -71,7 +71,7 @@ const Slicedrows = computed(() => {
     :progress="{ color: 'primary', animation: 'carousel' }"
 
     />
-    <UPagination v-model="page" :page-count="pageCount" :total="data.values.length" class="ml-5" />
+    <UPagination v-model="page" :page-count="pageCount" :total="data.length" class="ml-5" />
   </div>
 </template>
 
