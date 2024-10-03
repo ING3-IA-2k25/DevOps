@@ -3,8 +3,7 @@ services:
     build:
       context: .
       dockerfile: nuxt.Dockerfile
+    restart: unless-stopped
     ports:
       - 3000:3000
-    volumes:
-      - .:/app
     
