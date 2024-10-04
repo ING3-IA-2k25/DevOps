@@ -10,6 +10,7 @@ Make sure you have install docker and docker-compose on your engine then:
 sudo docker-compose up --build -d
 
 docker exec -ti devops_mongo_1 sh
+
 mongoimport --collection='fieldfile_option' --file=/data/db/Spotify_headerless.csv --type=csv --fieldFile=/data/db/Spotify_field_file.txt -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD --authenticationDatabase $MONGO_INITDB_ROOT_USERNAME
 
 ```
