@@ -11,7 +11,9 @@ services:
     
 
   mongo:
-    image: mongo
+    build:
+      context: .
+      dockerfile: mongo.Dockerfile
     tty: true
     restart: unless-stopped
     ports:
@@ -21,5 +23,3 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     #env_file:
     #- ./script.sh
-    volumes:
-      - ./content:/data/db  
