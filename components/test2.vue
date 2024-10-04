@@ -107,6 +107,9 @@ const columnsTable = computed(() => columns.value.filter((column) => selectedCol
       <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">
         songs
       </h2>
+      <div>
+        {{ pageCount }} {{ pageTotal }} {{ page }}
+      </div>
     </template>
 
     <!-- Filters -->
