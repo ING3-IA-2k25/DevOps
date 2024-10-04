@@ -1,11 +1,25 @@
 services:
-  front:
+  nuxt:
     build:
       context: .
       dockerfile: nuxt.Dockerfile
     restart: unless-stopped
     ports:
       - 3000:3000
-    volumes:
-      - .:/app
+    #volumes:
+    #  - .:/app
     
+
+  mongo:
+    image: mongo
+    tty: true
+    restart: unless-stopped
+    ports:
+      - 3001:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    #env_file:
+    #- ./script.sh
+    volumes:
+      - ./content:/data/db  
