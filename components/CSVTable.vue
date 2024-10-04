@@ -1,5 +1,42 @@
 <script setup lang="ts">
 
+
+
+
+
+fetch("api/find", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify( 
+    {
+      caca: "caca"
+    }
+  ),
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data); // Handle the response data here
+  })
+  .catch(error => {
+    console.error('There has been a problem with your fetch operation:', error);
+  });
+
+
+
+
+
+
+
+
+
+
 const { data: content, error } = await useAsyncData('songAttributes', async () => {
   try {
     const result = await queryContent('spotify_song_attributes').findOne();
