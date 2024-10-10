@@ -8,6 +8,11 @@ Make sure you have install docker and docker-compose on your engine then:
 
 ```bash
 sudo docker-compose up --build -d
+
+docker exec -ti devops_mongo_1 sh
+
+mongoimport --collection='fieldfile_option' --file=/data/db/Spotify_headerless.csv --type=csv --fieldFile=/data/db/Spotify_field_file.txt -u $MONGO_INITDB_ROOT_USERNAME -p $MONGO_INITDB_ROOT_PASSWORD --authenticationDatabase $MONGO_INITDB_ROOT_USERNAME
+
 ```
 
 ## Docker
@@ -91,4 +96,4 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information...

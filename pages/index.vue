@@ -1,5 +1,5 @@
 <template>
-  <div>
-    <CSVTable/>
-  </div>
+    <div>
+        <CSVTable />
+    </div>
 </template>

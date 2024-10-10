@@ -1,4 +1,4 @@
-FROM node:20.17.0-slim
+FROM node:20.18.0
 
 # Create app directory
 WORKDIR /app
@@ -15,9 +15,5 @@ RUN npm run build
 
 # Expose port and start application
 EXPOSE 3000
-
-# run the build project with node
-#CMD ["npm", "run", "start"]
-ENTRYPOINT ["node", ".output/server/index.mjs"]
 
 

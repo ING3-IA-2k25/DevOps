@@ -9,7 +9,18 @@ export default defineNuxtConfig({
     },
   ],
   css: ['~/assets/css/main.css'],
-  modules: ['@nuxt/ui', '@nuxt/content', '@nuxt/eslint'],
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@nuxt/image',
+  ],
+  nitro: { 
+    plugins: ['~/server/plugins/mongodb.ts'],
+  },
+  runtimeConfig: {
+    mongodbURI: process.env.MONGODB_URI
+  },
   tailwindcss: {
     cssPath: ['~/assets/css/main.sass', { injectPosition: 'first' }],
     configPath: '~/tailwind.config.ts',
