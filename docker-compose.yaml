@@ -6,8 +6,6 @@ services:
         dockerfile: mongo.Dockerfile
     tty: true
     restart: unless-stopped
-    ports:
-      - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
@@ -19,6 +17,8 @@ services:
       context: .
       dockerfile: nuxt.Dockerfile
     restart: unless-stopped
+    environment:
+      - NUXT_MONGODB_URI=mongodb://admin:admin@mongo:27017/Song?authSource=admin 
     ports:
       - 3000:3000
     depends_on:
