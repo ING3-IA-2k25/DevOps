@@ -63,14 +63,14 @@ const isResetDisabled = computed(() => {
         props.defaultColumnKeys.every((defaultCol) =>
             localSelectedColumns.value.some((selectedCol) => selectedCol.key === defaultCol.key)
         ) &&
-        localPageCount.value === 10 &&
+        Number(localPageCount.value) === 10 &&
         !props.canReset
     )
 })
 
 // Fonction pour mettre à jour le nombre de lignes par page
 const updatePageCount = (value: number) => {
-    emits('update:pageCount', value)
+    emits('update:pageCount', Number(value))
 }
 
 // Fonction pour émettre l'événement resetFilters et réinitialiser les colonnes
