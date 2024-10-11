@@ -7,14 +7,17 @@
             ring: '',
             divide: 'divide-y divide-gray-200 dark:divide-gray-700',
             header: { padding: 'px-4 py-5' },
-            body: { padding: '', base: 'divide-y divide-gray-200 dark:divide-gray-700' },
+            body: {
+                padding: '',
+                base: 'divide-y divide-gray-200 dark:divide-gray-700',
+            },
             footer: { padding: 'p-4' },
         }"
     >
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">Songs</h2>
-        </template>
-
+        <div class="flex items-center">
+            <img src="../../assets/sproutifart.png" alt="Sproutify" class="h-24" />
+            <h2 class="font-semibold text-5xl m-6 text-fern-500">Sproutify</h2>
+        </div>
         <!-- Filters -->
         <Filters
             :liked-status="likedStatus"
