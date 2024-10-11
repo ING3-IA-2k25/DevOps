@@ -1,22 +1,18 @@
 import type Song from '~/server/models/song.model'
 
-interface ApiRes {
+export interface ApiResponse {
     data: Song[]
     total: number
 }
 
-export type ApiResponse = ApiRes
-
 // Define LikeOption interface
-interface LikeOpt {
+export interface LikeOption {
     key: string
     label: string
     value: boolean
 }
 
-export type LikeOption = LikeOpt
-
-interface DropdownIt {
+export interface DropdownItem {
     key: string
     label: string
     icon?: string
@@ -24,4 +20,18 @@ interface DropdownIt {
     // Add other properties if necessary
 }
 
-export type DropdownItem = DropdownIt
+// Interface pour une colonne du tableau
+export interface Column {
+    key: string
+    label: string
+    sortable: boolean
+}
+
+// Type pour la direction du tri
+export type SortDirection = 'asc' | 'desc'
+
+// Interface pour les options de tri
+export interface SortOption {
+    column: string
+    direction: SortDirection
+}
