@@ -158,7 +158,11 @@ const pageTo = computed(() => Math.min(page.value * pageCount.value, pageTotal.v
         }"
     >
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-900 dark:text-white leading-tight">songs</h2>
+            <div class="flex items-center">
+
+                <img src="../assets/sproutifart.png" alt="Sproutify" class="h-24">
+                <h2 class="font-semibold text-5xl m-6 text-fern-500">Sproutify</h2>
+            </div>
         </template>
 
         <!-- Filters -->
