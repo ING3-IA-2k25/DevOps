@@ -1,38 +1,38 @@
 version: '3'
 services:
-  mongo:
-    build:
-        context: .
-        dockerfile: mongo.Dockerfile
-    tty: true
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
-    networks:
-      - app-network
-    
-  nuxt:
-    build:
-      context: .
-      dockerfile: nuxt.Dockerfile
-    restart: unless-stopped
-    environment:
-      - NUXT_MONGODB_URI=mongodb://admin:admin@mongo:27017/Song?authSource=admin 
-    ports:
-      - 3000:3000
-    depends_on:
-      mongo:
-        condition: service_started 
-    entrypoint: ["node", ".output/server/index.mjs"]
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/song-attributes"]
-      interval: 10s
-      timeout: 3s
-      retries: 3
-    
+    mongo:
+        build:
+            context: .
+            dockerfile: mongo.Dockerfile
+        tty: true
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: admin
+        networks:
+            - app-network
+
+    nuxt:
+        build:
+            context: .
+            dockerfile: nuxt.Dockerfile
+        restart: unless-stopped
+        environment:
+            - NUXT_MONGODB_URI=mongodb://admin:admin@mongo:27017/Song?authSource=admin
+        ports:
+            - 3000:3000
+        depends_on:
+            mongo:
+                condition: service_started
+        entrypoint: ['node', '.output/server/index.mjs']
+        networks:
+            - app-network
+        healthcheck:
+            test: ['CMD', 'curl', '-f', 'http://localhost:3000/api/song-attributes']
+            interval: 10s
+            timeout: 3s
+            retries: 3
+
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge

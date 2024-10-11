@@ -1,26 +1,28 @@
-// composables/useSongs.ts
 import type { ApiResponse, Column, LikeOption, SortOption } from '~/types/table'
 
 export function useSongs() {
     const search = ref('')
     const selectedLikes = ref<LikeOption[]>([])
     const selectedColumns = ref<Column[]>([])
-    const sort = ref<SortOption>({ column: '_id', direction: 'asc' })
+    const sort = ref<SortOption | undefined>(undefined) // Permet d'avoir undefined
     const page = ref(1)
     const pageCount = ref(10)
 
     const fetchSongs = () => {
-        return $fetch<ApiResponse>('/api/song', {
-            query: {
-                q: search.value,
-                _page: page.value,
-                _limit: pageCount.value,
-                _sort: sort.value.column,
-                _order: sort.value.direction,
-                _fields: selectedColumns.value.map((column) => column.key).join(','),
-                liked: selectedLikes.value.map((like) => like.value),
-            },
-        })
+        const query: Record<string, any> = {
+            q: search.value,
+            _page: page.value,
+            _limit: pageCount.value,
+            _fields: selectedColumns.value.map((column) => column.key).join(','),
+            liked: selectedLikes.value.map((like) => like.value),
+        }
+
+        if (sort.value) {
+            query._sort = sort.value.column
+            query._order = sort.value.direction
+        }
+
+        return $fetch<ApiResponse>('/api/song', { query })
     }
 
     const {
