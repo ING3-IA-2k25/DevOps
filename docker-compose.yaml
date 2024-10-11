@@ -27,6 +27,11 @@ services:
     entrypoint: ["node", ".output/server/index.mjs"]
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/song-attributes"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
     
 networks:
   app-network:
